@@ -27,15 +27,15 @@ export function About() {
             
             <div className="space-y-4">
               <p>
-                I’m Santosh Rai, a passionate Full Stack Developer who loves turning ideas into clean, functional, and scalable digital experiences. With a strong foundation in both frontend and backend technologies, I specialize in building responsive web applications using modern frameworks like React, Next.js, Django, and Node.js.
+                I&apos;m Santosh Rai, a passionate Full Stack Developer who loves turning ideas into clean, functional, and scalable digital experiences. With a strong foundation in both frontend and backend technologies, I specialize in building responsive web applications using modern frameworks like React, Next.js, Django, and Node.js.
               </p>
               
               <p>
-                I thrive on solving complex problems and bringing designs to life with pixel-perfect precision. Whether it's creating e-commerce platforms, admin dashboards, or business websites, I’m committed to writing clean, maintainable code that delivers real value.
+                I thrive on solving complex problems and bringing designs to life with pixel-perfect precision. Whether it&apos;s creating e-commerce platforms, admin dashboards, or business websites, I&apos;m committed to writing clean, maintainable code that delivers real value.
               </p>
               
               <p>
-                When I’m not coding, you’ll find me exploring new technologies, optimizing workflows, or building something just for fun.
+                When I&apos;m not coding, you&apos;ll find me exploring new technologies, optimizing workflows, or building something just for fun.
               </p>
             </div>
             
