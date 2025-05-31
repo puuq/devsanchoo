@@ -20,6 +20,11 @@ const pixelFont = Press_Start_2P({
 export const metadata: Metadata = {
   title: "devsanchoo",
   description: "The Developer's Journey",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+    shortcut: "/favicon-32x32.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
