@@ -52,13 +52,13 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           <div className="flex flex-col flex-grow p-4 md:p-6">
             <h3 className="pixel-text text-sm md:text-base font-bold tracking-wider mb-2">{project.title}</h3>
             <p className="text-sm text-muted-foreground mb-4 flex-grow">{project.description}</p>
-            <div className="flex flex-wrap gap-2">
+            {/* <div className="flex flex-wrap gap-2">
               {project.tags.map(tag => (
                 <span key={tag} className="inline-flex items-center px-2 py-1 text-xs bg-secondary text-secondary-foreground rounded-sm pixel-corners">
                   {tag}
                 </span>
               ))}
-            </div>
+            </div> */}
           </div>
         </PixelCard>
       </motion.div>
