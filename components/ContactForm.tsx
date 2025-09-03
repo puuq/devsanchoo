@@ -4,9 +4,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { PixelButton, PixelCard } from "./PixelComponents";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Send } from "lucide-react";
 import { useState } from "react";
+
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -113,29 +114,35 @@ export function ContactForm() {
                 )}
               </div>
               
-              <div>
+              <div className="relative space-y-2">
                 <PixelButton 
                   type="submit" 
-                  className="w-full"
+                  className="w-full flex items-center justify-center gap-2"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
-                    "SENDING..."
+                    <span className="animate-pulse flex items-center justify-center gap-2">SENDING...</span>
                   ) : (
-                    <span className="flex items-center justify-center gap-2">
+                    <>
                       <Send className="h-4 w-4" />
                       SEND MESSAGE
-                    </span>
+                    </>
                   )}
                 </PixelButton>
 
-
-                
-                {isSuccess && (
-                  <p className="text-[hsl(var(--success))] text-sm mt-2">
-                    Your message has been sent successfully!
-                  </p>
-                )}
+                <AnimatePresence>
+                  {isSuccess && (
+                    <motion.p
+                      initial={{ opacity: 0, y: -4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -4 }}
+                      transition={{ duration: 0.3 }}
+                      className="text-[hsl(var(--success))] text-sm"
+                    >
+                      ✅ Your message has been sent successfully!
+                    </motion.p>
+                  )}
+                </AnimatePresence>
               </div>
             </form>
           </PixelCard>
