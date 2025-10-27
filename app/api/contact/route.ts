@@ -1,8 +1,4 @@
-
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
   const body = await req.json();
@@ -10,19 +6,13 @@ export async function POST(req: Request) {
   try {
     const { name, email, message } = body;
 
-    const data = await resend.emails.send({
-      from: "Contact Form <onboarding@resend.dev>",
-      to: "santoshrai3.1415@gmail.com",
-      subject: "New Contact From Client",
-      html: `
-        <h3>New message from ${name}</h3>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong><br/>${message}</p>
-      `,
-    });
+    // You can log or handle the message in another way here if needed
+    console.log("New contact form submission:", { name, email, message });
 
+    // Simulate success response
     return NextResponse.json({ success: true });
   } catch (error) {
-    return NextResponse.json({ error: "Failed to send email." }, { status: 500 });
+    console.error("Contact form error:", error);
+    return NextResponse.json({ error: "Failed to process message." }, { status: 500 });
   }
 }
