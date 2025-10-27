@@ -26,7 +26,7 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
   }
 
   return (
-    <section className="max-w-5xl mx-auto py-16 px-4 space-y-10">
+    <section className="max-w-5xl mt-10 mx-auto py-20 px-4 space-y-10">
         <Link
             href="/#projects"
             className="text-lg text-muted-foreground hover:underline"
