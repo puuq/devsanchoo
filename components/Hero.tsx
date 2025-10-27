@@ -50,7 +50,7 @@ export function Hero() {
         
         <div className="flex flex-col sm:flex-row gap-4">
           <PixelButton
-            onClick={() => window.open("/resume_fullstack_santosh.pdf", "_blank")}
+            onClick={() => window.open("/resume.pdf", "_blank")}
           >
             VIEW RÉSUMÉ
           </PixelButton>
