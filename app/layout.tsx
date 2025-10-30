@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   title: "devsanchoo",
   description: "The Developer's Journey",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.svg",
     apple: "/apple-touch-icon.png",
     shortcut: "/favicon-32x32.png",
   },
