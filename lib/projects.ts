@@ -52,7 +52,8 @@ export const PROJECTS: Project[] = [
     "Sports Tech"
     ],
     category: "frontend",
-    githubUrl: "https://github.com/puuq/GamePlan",
+    liveUrl: "https://game-plan-eight.vercel.app/",
+    // githubUrl: "https://github.com/puuq/GamePlan",
   },
   {
     id: "trinityremovals",
