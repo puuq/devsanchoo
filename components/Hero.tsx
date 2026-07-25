@@ -21,7 +21,7 @@ export function Hero() {
   }, [typedText]);
 
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] py-12 overflow-hidden pixel-dots">
+    <section id="home" className="relative flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] py-12 overflow-hidden pixel-dots">
       <div className="absolute inset-0 z-0">
         <div className="h-full w-full bg-[radial-gradient(circle_at_center,rgba(var(--pixel-primary),0.15),transparent_60%)]"></div>
       </div>

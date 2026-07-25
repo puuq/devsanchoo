@@ -182,3 +182,166 @@
     animation: pixel-bounce 0.5s ease infinite;
   }
 }
+
+.project-scroll-section {
+  position: relative;
+  height: 250vh;
+}
+
+.project-scroll-sticky {
+  position: sticky;
+  top: 0;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #0b1020, #0e1425, #0b1020);
+}
+
+.project-scroll-viewport {
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.project-scroll-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 31vw) 1fr;
+  align-items: center;
+  width: 100%;
+  gap: 1.5rem;
+  padding-left: max(1.5rem, calc((100vw - 80rem) / 2));
+}
+
+.project-scroll-intro {
+  max-width: 290px;
+}
+
+.project-scroll-track {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  padding: 0 1.5rem 0 1rem;
+  will-change: transform;
+}
+
+.project-scroll-card {
+  width: min(410px, 72vw);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 0.9rem;
+  background: rgba(15, 20, 37, 0.94);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.22);
+}
+
+.project-scroll-visual {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  background: #111a2c;
+}
+
+.project-scroll-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(8, 13, 25, 0.45), transparent 50%);
+  pointer-events: none;
+}
+
+.dashboard-preview {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 22% 1fr;
+  gap: 0.75rem;
+  padding: 1.4rem;
+  background:
+    radial-gradient(circle at 75% 15%, rgba(99, 102, 241, 0.22), transparent 38%),
+    #111a2c;
+}
+
+.dashboard-sidebar,
+.dashboard-content,
+.dashboard-cards span,
+.dashboard-chart {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.45rem;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.dashboard-content { padding: 0.75rem; }
+.dashboard-line { width: 38%; height: 0.5rem; border-radius: 1rem; background: rgba(129, 140, 248, 0.55); }
+.dashboard-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 0.75rem; }
+.dashboard-cards span { height: 2.8rem; }
+.dashboard-chart { height: 5rem; margin-top: 0.75rem; background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(56, 189, 248, 0.03)); }
+
+@media (max-width: 767px) {
+  .project-scroll-section {
+    height: auto;
+    padding: 5rem 0;
+    background: #0b1020;
+  }
+
+  .project-scroll-sticky {
+    position: relative;
+    height: auto;
+    overflow: visible;
+  }
+
+  .project-scroll-viewport {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .project-scroll-layout {
+    display: block;
+    padding-left: 0;
+  }
+
+  .project-scroll-intro {
+    max-width: none;
+    padding: 0 1.5rem 2rem;
+  }
+
+  .project-scroll-viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .project-scroll-track {
+    transform: none !important;
+    padding-right: 1.5rem;
+  }
+
+  .project-scroll-card {
+    width: 82vw;
+    scroll-snap-align: center;
+  }
+
+  .project-scroll-visual {
+    height: 190px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-scroll-section {
+    height: auto;
+    padding: 5rem 0;
+  }
+
+  .project-scroll-sticky {
+    position: relative;
+    height: auto;
+    overflow: visible;
+  }
+
+  .project-scroll-viewport {
+    overflow-x: auto;
+  }
+
+  .project-scroll-track {
+    transform: none !important;
+  }
+}

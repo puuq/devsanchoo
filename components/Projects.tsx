@@ -1,56 +1,143 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight, LockKeyhole } from "lucide-react";
 import { PROJECTS } from "@/lib/projects";
-import { Code2 } from "lucide-react";
+
+const FEATURED_IDS = [
+  "sgtproductions",
+  "nepfaceproduction",
+  "billing-dashboard",
+  "gameplan",
+  "mailswayinc",
+];
+
+const featured = FEATURED_IDS.map((id) => PROJECTS.find((item) => item.id === id)).filter(
+  Boolean
+) as typeof PROJECTS;
 
 export function Projects() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const [progress, setProgress] = useState(0);
+  const [travel, setTravel] = useState(0);
+
+  useEffect(() => {
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      if (!sectionRef.current || window.innerWidth < 768) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const distance = sectionRef.current.offsetHeight - window.innerHeight;
+      const next = distance > 0 ? Math.min(1, Math.max(0, -rect.top / distance)) : 0;
+      if (trackRef.current && viewportRef.current) {
+        setTravel(
+          Math.max(0, trackRef.current.scrollWidth - viewportRef.current.clientWidth)
+        );
+      }
+      setProgress(next);
+    };
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return (
-    <section
-      id="projects"
-      className="py-24 relative overflow-hidden bg-gradient-to-b from-[#0b1020] via-[#0e1425] to-[#0b1020]"
-    >
-      {/* Background accent */}
-      <div className="absolute inset-0 -z-10 opacity-[0.07] bg-[url('/grid.svg')] bg-center bg-repeat" />
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute w-80 h-80 bg-indigo-500/20 blur-[100px] top-10 left-10 rounded-full" />
-        <div className="absolute w-96 h-96 bg-fuchsia-500/20 blur-[120px] bottom-10 right-10 rounded-full" />
-      </div>
+    <section id="projects" ref={sectionRef} className="project-scroll-section">
+      <div className="project-scroll-sticky">
+        <div className="project-scroll-layout">
+          <aside className="project-scroll-intro">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-indigo-300">
+              Selected work
+            </p>
+            <h2 className="mt-4 text-3xl font-bold leading-tight text-white md:text-4xl">
+              Projects built for real users.
+            </h2>
+            <p className="mt-5 text-sm leading-relaxed text-slate-400">
+              A selection of client platforms and production systems I designed,
+              developed, and shipped across frontend, backend, data, and deployment.
+            </p>
+          </aside>
 
-      <div className="max-w-4xl mx-auto px-6">
-        {/* Header */}
-        <div className="flex items-center gap-3 mb-10">
-          <Code2 className="text-indigo-400 w-6 h-6" />
-          <h2 className="text-3xl md:text-4xl font-bold text-white">Latest Projects</h2>
-        </div>
-
-        {/* Project list */}
-        <div className="space-y-6">
-          {PROJECTS.map((project, i) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1, duration: 0.4 }}
-              viewport={{ once: true }}
+          <div ref={viewportRef} className="project-scroll-viewport">
+            <div
+              ref={trackRef}
+              className="project-scroll-track"
+              style={{ transform: `translate3d(${-progress * travel}px, 0, 0)` }}
             >
-              <Link
-                href={`/projects/${project.id}`}
-                className="group block border border-[#1c2235] bg-[#0f1425]/60 backdrop-blur-md rounded-xl p-5 hover:border-indigo-400/40 hover:shadow-[0_0_12px_rgba(99,102,241,0.2)] transition-all duration-300"
-              >
-                <div className="flex justify-between items-start">
-                  <h3 className="text-lg font-semibold text-white group-hover:text-indigo-400 transition-colors">
-                    {project.title}
-                  </h3>
+              {featured.map((project, index) => (
+              <article key={project.id} className="project-scroll-card group">
+                <div className="project-scroll-visual">
+                  {project.image ? (
+                    <Image
+                      src={project.image}
+                      alt=""
+                      fill
+                      sizes="(max-width: 767px) 88vw, 54vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                      priority={index < 2}
+                    />
+                  ) : (
+                    <div className="dashboard-preview" aria-hidden="true">
+                      <div className="dashboard-sidebar" />
+                      <div className="dashboard-content">
+                        <div className="dashboard-line" />
+                        <div className="dashboard-cards">
+                          <span /><span /><span />
+                        </div>
+                        <div className="dashboard-chart" />
+                      </div>
+                      <LockKeyhole className="absolute bottom-5 right-5 h-5 w-5 text-sky-300" />
+                    </div>
+                  )}
                 </div>
-                <p className="text-gray-400 text-sm mt-2 leading-relaxed">
-                  {project.shortDescription ||
-                    project.description.slice(0, 150) + "..."}
-                </p>
-              </Link>
-            </motion.div>
-          ))}
+                <div className="p-5">
+                  <div className="flex items-start justify-between gap-5">
+                    <div>
+                      <p className="mb-2 text-[10px] uppercase tracking-[0.16em] text-indigo-300">
+                        {project.liveUrl ? "Live client work" : "Private production system"}
+                      </p>
+                      <h3 className="text-lg font-semibold leading-tight text-white">
+                        {project.title}
+                      </h3>
+                    </div>
+                    <Link
+                      href={`/projects/${project.id}`}
+                      aria-label={`View ${project.title} case study`}
+                      className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-white/10 text-white transition hover:border-indigo-300 hover:bg-indigo-400 hover:text-slate-950"
+                    >
+                      <ArrowUpRight className="h-5 w-5" />
+                    </Link>
+                  </div>
+                  <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-slate-400">
+                    {project.shortDescription}
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {project.tags.slice(0, 4).map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[10px] text-slate-400"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </article>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

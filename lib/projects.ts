@@ -18,6 +18,7 @@ export const PROJECTS: Project[] = [
       "A full-stack film-production website designed, built, and deployed from scratch for an Australian client.",
     description:
       "A production-ready website for an Australian film company focused on co-productions and international markets. I handled the complete lifecycle: UI/UX, responsive frontend, backend features, authentication, forms, image uploads, database integration, and deployment.",
+    image: "/sgtproductions.jpg",
     tags: [
       "Next.js 15",
       "React 19",
@@ -39,6 +40,7 @@ export const PROJECTS: Project[] = [
       "A responsive marketing and portfolio website for a Kathmandu-based creative media studio.",
     description:
       "Designed, built, and deployed from scratch for a paid client. The site combines a filterable work portfolio, video interactions, smooth scrolling, validated contact forms, responsive layouts, and technical SEO.",
+    image: "/nepfaceproduction.jpg",
     tags: [
       "Next.js",
       "TypeScript",

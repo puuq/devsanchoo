@@ -3,21 +3,63 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const NAV_ITEMS = [
-  { label: "Home", href: "/" },
-  { label: "Projects", href: "/#projects" },
-  { label: "Experience", href: "/#experience" },
-  { label: "Skills", href: "/#skills" },
-  { label: "About", href: "/#about" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Home", href: "/#home", id: "home" },
+  { label: "Projects", href: "/#projects", id: "projects" },
+  { label: "Experience", href: "/#experience", id: "experience" },
+  { label: "Skills", href: "/#skills", id: "skills" },
+  { label: "About", href: "/#about", id: "about" },
+  { label: "Contact", href: "/#contact", id: "contact" },
 ];
 
 export function Navbar() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    if (pathname !== "/") return;
+
+    const sections = NAV_ITEMS.map((item) => document.getElementById(item.id)).filter(
+      Boolean
+    ) as HTMLElement[];
+    let frame = 0;
+
+    const updateActiveSection = () => {
+      frame = 0;
+      const probe = window.scrollY + window.innerHeight * 0.35;
+      let current = sections[0]?.id ?? "home";
+
+      for (const section of sections) {
+        const top = section.offsetTop;
+        const bottom = top + section.offsetHeight;
+        if (probe >= top && probe < bottom) {
+          current = section.id;
+          break;
+        }
+        if (probe >= top) current = section.id;
+      }
+
+      setActiveSection(current);
+    };
+
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateActiveSection);
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, [pathname]);
 
   return (
     <header className="fixed top-7 left-14 right-14 z-50 bg-background/80 backdrop-blur-lg border border-border rounded-xl shadow-md">
@@ -49,7 +91,7 @@ export function Navbar() {
               href={item.href}
               className={cn(
                 "transition-colors pixel-text text-base font-medium hover:text-primary/80",
-                pathname === item.href ? "text-primary" : "text-muted-foreground"
+                activeSection === item.id ? "text-primary" : "text-muted-foreground"
               )}
             >
               {item.label}
@@ -68,7 +110,7 @@ export function Navbar() {
                 href={item.href}
                 className={cn(
                   "py-3 transition-colors pixel-text text-base font-medium hover:text-primary/80",
-                  pathname === item.href ? "text-primary" : "text-muted-foreground"
+                  activeSection === item.id ? "text-primary" : "text-muted-foreground"
                 )}
                 onClick={() => setIsMenuOpen(false)}
               >
