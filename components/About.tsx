@@ -1,9 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
-import { PixelButton, PixelCard } from "./PixelComponents";
-import { Download } from "lucide-react";
 
 export function About() {
   return (
@@ -21,21 +18,31 @@ export function About() {
                 ABOUT ME
               </h2>
               <p className="text-muted-foreground">
-                Hi, I am a Full Stack Developer with a passion for creating beautiful, functional, and user-centered digital experiences.
+                I build user-centered products from first interface to production deployment.
               </p>
             </div>
             
             <div className="space-y-4">
               <p>
-                I&apos;m Santosh Rai, a passionate Full Stack Developer who loves turning ideas into clean, functional, and scalable digital experiences. With a strong foundation in both frontend and backend technologies, I specialize in building responsive web applications using modern frameworks like React, Next.js, Django, and Node.js.
+                I&apos;m Santosh Rai, a Full Stack Developer with 3+ years of
+                experience delivering client and business applications. My
+                recent work spans responsive interfaces, backend APIs,
+                authentication, SQL database design, third-party integrations,
+                and Cloudflare deployments.
               </p>
               
               <p>
-                I thrive on solving complex problems and bringing designs to life with pixel-perfect precision. Whether it&apos;s creating e-commerce platforms, admin dashboards, or business websites, I&apos;m committed to writing clean, maintainable code that delivers real value.
+                I have worked independently and in small teams, taking products
+                from requirements and UI/UX design through implementation,
+                testing, troubleshooting, and launch. Recent projects include
+                media platforms and a private multi-branch billing dashboard
+                used in day-to-day business operations.
               </p>
               
               <p>
-                When I&apos;m not coding, you&apos;ll find me exploring new technologies, optimizing workflows, or building something just for fun.
+                Away from code, I enjoy competitive FPS and hero shooters,
+                Soulslike games, and exploring how software can improve player
+                experiences.
               </p>
             </div>
             

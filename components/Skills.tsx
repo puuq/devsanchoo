@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { PixelCard } from "./PixelComponents";
-import { Database, Globe, Server, Layout, Code, Layers, Cpu, ArrowRight } from "lucide-react";
+import { Database, Globe, Server, Layout, Wrench, ArrowRight } from "lucide-react";
 
 interface Skill {
   icon: React.ReactNode;
@@ -14,22 +14,27 @@ const SKILLS: Skill[] = [
   {
     icon: <Globe className="h-8 w-8" />,
     category: "Frontend",
-    items: ["React", "Next.js", "Vue.js", "HTML5", "CSS3/SASS", "JavaScript", "TypeScript"]
+    items: ["React", "Next.js", "JavaScript (ES6+)", "TypeScript", "HTML5", "CSS3"]
   },
   {
     icon: <Server className="h-8 w-8" />,
     category: "Backend",
-    items: ["Node.js", "Express", "NestJS", "Python", "Django", "PHP",]
+    items: ["Node.js", "Next.js APIs", "Express", "Python", "Django", "REST APIs"]
   },
   {
     icon: <Database className="h-8 w-8" />,
     category: "Databases",
-    items: ["MongoDB", "PostgreSQL", "MySQL", "Firebase",]
+    items: ["PostgreSQL", "MariaDB", "MySQL", "SQLite", "MongoDB", "Drizzle ORM"]
   },
   {
     icon: <Layout className="h-8 w-8" />,
     category: "UI/UX",
-    items: ["Tailwind CSS", "Material UI", "Styled Components", "Figma", "Responsive Design"]
+    items: ["Tailwind CSS", "Responsive Design", "UI/UX", "Framer Motion", "Form Validation"]
+  },
+  {
+    icon: <Wrench className="h-8 w-8" />,
+    category: "Delivery & Tools",
+    items: ["Git", "Docker", "Cloudflare", "Playwright", "Authentication", "Third-party APIs"]
   },
   // {
   //   icon: <Code className="h-8 w-8" />,

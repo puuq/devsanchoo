@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 export function Hero() {
   const [typedText, setTypedText] = useState("");
-  const fullText = "Full Stack Developer | Crafting Code with Precision";
+  const fullText = "Full Stack Developer | From Interface to Infrastructure";
   const typingSpeed = 100; // milliseconds per character
 
   useEffect(() => {
@@ -44,15 +44,15 @@ export function Hero() {
         </div>
         
         <p className="max-w-[42rem] text-muted-foreground sm:text-lg">
-          I build modern web applications with clean code and pixel-perfect design.
-          Specializing in React, Next.js, and full-stack development.
+          I design, build, and ship production web applications with React,
+          Next.js, Node.js, and SQL databases.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4">
           <PixelButton
             onClick={() => window.open("/resume.pdf", "_blank")}
           >
-            VIEW RÉSUMÉ
+            VIEW RESUME
           </PixelButton>
           {/* <PixelButton 
             variant="outline"

@@ -40,11 +40,13 @@ export default function ProjectDetailPage({ params }: { params: { id: string } }
           {project.title}
         </h1>
 
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full rounded-lg object-scale-down max-h-[400px] shadow-xl border border-border"
-        />
+        {project.image && (
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full rounded-lg object-scale-down max-h-[400px] shadow-xl border border-border"
+          />
+        )}
 
         <p className="text-muted-foreground sm:text-lg">{project.description}</p>
 

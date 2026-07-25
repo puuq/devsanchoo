@@ -18,8 +18,9 @@ const pixelFont = Press_Start_2P({
 });
 
 export const metadata: Metadata = {
-  title: "devsanchoo",
-  description: "The Developer's Journey",
+  title: "Santosh Rai | Full Stack Developer",
+  description:
+    "Portfolio of Santosh Rai, a full stack developer building production web applications with React, Next.js, Node.js, and SQL databases.",
   icons: {
     icon: "/favicon.svg",
     apple: "/apple-touch-icon.png",

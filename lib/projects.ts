@@ -3,7 +3,7 @@ export interface Project {
   title: string;
   shortDescription?: string;
   description: string;
-  image: string;
+  image?: string;
   tags: string[];
   category: "frontend" | "backend" | "ai" | "mobile" | "other";
   liveUrl?: string;
@@ -11,6 +11,64 @@ export interface Project {
 }
 
 export const PROJECTS: Project[] = [
+  {
+    id: "sgtproductions",
+    title: "SGT PRODUCTIONS",
+    shortDescription:
+      "A full-stack film-production website designed, built, and deployed from scratch for an Australian client.",
+    description:
+      "A production-ready website for an Australian film company focused on co-productions and international markets. I handled the complete lifecycle: UI/UX, responsive frontend, backend features, authentication, forms, image uploads, database integration, and deployment.",
+    tags: [
+      "Next.js 15",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS",
+      "Drizzle ORM",
+      "SQLite",
+      "JWT",
+      "Zod",
+      "Framer Motion",
+    ],
+    category: "frontend",
+    liveUrl: "https://sgtproductions.com",
+  },
+  {
+    id: "nepfaceproduction",
+    title: "NEPFACE PRODUCTION",
+    shortDescription:
+      "A responsive marketing and portfolio website for a Kathmandu-based creative media studio.",
+    description:
+      "Designed, built, and deployed from scratch for a paid client. The site combines a filterable work portfolio, video interactions, smooth scrolling, validated contact forms, responsive layouts, and technical SEO.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Lenis",
+      "React Hook Form",
+      "Zod",
+      "Technical SEO",
+    ],
+    category: "frontend",
+    liveUrl: "https://nepfaceproduction.com",
+  },
+  {
+    id: "billing-dashboard",
+    title: "MULTI-BRANCH BILLING DASHBOARD",
+    shortDescription:
+      "A private production dashboard used by two clothing-company branches to manage bills, advances, and profit calculations.",
+    description:
+      "An independently designed, developed, and deployed business application for a clothing company. It supports authenticated users, branch-aware role permissions, pending and historical bill tracking, advance payments, and profit calculations. Client data and access remain private.",
+    tags: [
+      "Next.js",
+      "PostgreSQL",
+      "Authentication",
+      "Role-based Access",
+      "Cloudflare",
+      "Business Operations",
+    ],
+    category: "backend",
+  },
   {
     id: "mailswayinc",
     title: "INTEGRATED MAILING & DATA SERVICES",
@@ -34,7 +92,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "gameplan",
-    title: "GAMEPLAN – AI-POWERED MATCH ANALYTICS DASHBOARD",
+    title: "GAMEPLAN - AI-POWERED MATCH ANALYTICS DASHBOARD",
     shortDescription:
       "An interactive web dashboard for real-time football analytics using AI and computer vision technologies like YOLO and OpenCV.",
     description:
@@ -61,14 +119,12 @@ export const PROJECTS: Project[] = [
     shortDescription:
       "A full-featured web platform for Trinity Removals, offering moving services across Australia with booking, quotes, and service details.",
     description:
-      "Reliable and affordable moving solutions across Australia — specializing in home and apartment relocations with safe handling, timely delivery, and professional support.",
+      "A responsive website for an Australian moving company, presenting home and apartment relocation services with clear calls to action and service information.",
     image: "/trinity.png",
     tags: [
       "Django",
-      "JavaScript",
       "Responsive Design",
-      "MongoDB",
-      "Admin Dashboard",
+      "HTML5",
       "CSS3",
     ],
     category: "backend",
@@ -76,17 +132,16 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "perfectincense",
-    title: "PERFECT INCENSE – HOME & OFFICE CLEANING SERVICES",
+    title: "PERFECT INCENSE - HOME & OFFICE CLEANING SERVICES",
     shortDescription:
       "A web platform built for Perfect Incense, enabling customers to book professional cleaning services for homes and workplaces.",
     description:
       "A web platform built for Perfect Incense, enabling customers to book professional cleaning services for homes and workplaces. Designed with a user-friendly interface, responsive layout, and smooth booking flow to streamline service requests.",
     image: "/perfectincense.png",
     tags: [
-      "Django",
-      "JavaScript",
+      "React",
+      "Node.js",
       "Responsive Design",
-      "PostgreSQL",
       "HTML5",
       "CSS3",
     ],
